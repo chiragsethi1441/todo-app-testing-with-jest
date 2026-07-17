@@ -42,10 +42,10 @@ jobs:
           exit-code: '0'
 
       - name: Build Docker image
-        run: docker build -t chiragsethi0902/todo-app-testing-with-jest:${{ github.sha }} .
+        run: docker build -t bladeairazor01/todo-app-testing-with-jest:${{ github.sha }} .
 
       - name: Save image as tarball for scanning
-        run: docker save -o image.tar chiragsethi0902/todo-app-testing-with-jest:${{ github.sha }}
+        run: docker save -o image.tar bladeairazor01/todo-app-testing-with-jest:${{ github.sha }}
 
       - name: Trivy image scan
         uses: aquasecurity/trivy-action@v0.36.0
@@ -57,8 +57,8 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: chiragsethi0902
+          username: bladeairazor01
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Docker image
-        run: docker push chiragsethi0902/todo-app-testing-with-jest:${{ github.sha }}
+        run: docker push bladeairazor01/todo-app-testing-with-jest:${{ github.sha }}
